@@ -1,0 +1,14 @@
+.app-footer {
+    background-color: #4169E1; /* Azul Royal para combinar com o cabeçalho */
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    font-size: 0.9em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* Use 'fixed' se quiser fixar no fundo da tela */
+    bottom: 0;
+    width: 100%;
+    border-top: 3px solid #1c1c1c;
+  }
+  

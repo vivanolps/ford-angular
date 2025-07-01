@@ -1,0 +1,29 @@
+<div class="login-page-container">
+  <div class="login-image-section">
+    <img src="img/ranger.png" alt="Ford Ranger" class="ranger-image">
+    </div>
+
+  <div class="login-form-section">
+    <img src="img/ford.png" alt="Logo Ford" class="ford-logo">
+    <h2>Boas-vindas</h2>
+
+    <form (ngSubmit)="onLogin()">
+      <div class="input-group">
+        <i class="fas fa-envelope icon"></i> <input type="text" placeholder="Insira seu e-mail" [(ngModel)]="usuario" name="usuario" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock icon"></i> <input type="password" placeholder="Insira sua senha" [(ngModel)]="senha" name="senha" required>
+        <i class="fas fa-eye password-toggle"></i> </div>
+
+      <label class="auto-login-checkbox">
+        <input type="checkbox" [(ngModel)]="lembrar" name="lembrar" />
+        Logar automaticamente
+      </label>
+
+      <button type="submit" [disabled]="!usuario || !senha">Entrar</button>
+
+      <p *ngIf="erroLogin" class="error-message">Usuário ou senha inválidos</p>
+    </form>
+  </div>
+</div>
