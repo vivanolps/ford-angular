@@ -1,0 +1,16 @@
+<div class="auth-layout-container">
+    <app-header></app-header> <div class="content-wrapper">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+            <li><a (click)="logout()">Logout</a></li> </ul>
+        </nav>
+      </aside>
+  
+      <main class="main-content">
+        <router-outlet></router-outlet> </main>
+    </div>
+  
+    <app-footer></app-footer> </div>
