@@ -1,0 +1,19 @@
+.dashboard-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #e9ecef;
+    min-height: calc(100vh - 100px); /* Ajuste com base na altura real do header/footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dashboard-container h1 {
+    color: #002D62;
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-container p {
+    color: #555;
+  }
