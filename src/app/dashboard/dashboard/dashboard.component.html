@@ -1,4 +1,68 @@
-<div class="dashboard-container">
-    <h1>Dashboard da Ford</h1>
-    
+<div class="dashboard-content-container">
+  <div class="vehicle-selector-card card">
+    <label for="vehicle-select">Veículo</label>
+    <select id="vehicle-select" [(ngModel)]="selectedVehicleModel" (change)="onVehicleSelect()">
+      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.model">{{ vehicle.model }}</option>
+    </select>
   </div>
+
+  <div class="data-cards" *ngIf="selectedVehicleDetails">
+    <div class="data-card">
+      <span>Total de Vendas</span>
+      <strong>{{ selectedVehicleDetails.totalSales || 0 }}</strong> <small>unid</small>
+    </div>
+    <div class="data-card">
+      <span>Conectados</span>
+      <strong>{{ selectedVehicleDetails.connected || 0 }}</strong>
+      <small>unid</small>
+    </div>
+    <div class="data-card">
+      <span>Update Software</span>
+      <strong>{{ selectedVehicleDetails.softwareUpdated || 0 }}</strong>
+      <small>unid</small>
+    </div>
+  </div>
+
+  <div class="vehicle-display-image" *ngIf="selectedVehicleDetails && selectedVehicleDetails.imageUrl">
+    <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
+  </div>
+  <div class="vehicle-display-image" *ngIf="!selectedVehicleDetails || !selectedVehicleDetails.imageUrl">
+    <p>Nenhuma imagem disponível para este veículo.</p>
+  </div>
+
+
+  <div class="data-table-section">
+    <div class="table-search">
+      <label for="vin-search">Buscar por Código do Veículo:</label>
+      <input type="text" id="vin-search" [(ngModel)]="vinSearchTerm" placeholder="Ex: 2FRH..." (keyup)="filterTableData()">
+    </div>
+
+    <div class="data-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of filterTableData()">
+            <td>{{ data.codigoVin }}</td>
+            <td>{{ data.odometro }} Km</td>
+            <td>{{ data.nivelCombustivel }} %</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.lat }}</td>
+            <td>{{ data.long }}</td>
+          </tr>
+          <tr *ngIf="filterTableData().length === 0">
+            <td colspan="6">Nenhum dado de veículo encontrado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
