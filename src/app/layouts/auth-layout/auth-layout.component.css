@@ -1,60 +1,122 @@
+/* Container principal com fundo branco */
 .auth-layout-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Garante que o layout ocupe a altura total da viewport */
-  }
-  
-  .content-wrapper {
-    display: flex;
-    flex: 1; /* Faz com que o wrapper ocupe o espaço restante */
-  }
-  
-  .sidebar {
-    width: 200px; /* Largura do menu lateral */
-    background-color: #f0f2f5; /* Cor de fundo do sidebar */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    display: flex; /* Para alinhar o nav dentro */
-    flex-direction: column;
-  }
-  
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-  
-  .sidebar nav li {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar nav a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 15px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .sidebar nav a:hover {
-    background-color: #ddd;
-  }
-  
-  .sidebar nav a.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .main-content {
-    flex: 1; /* Ocupa o restante do espaço */
-    padding: 20px;
-    overflow-y: auto; /* Permite scroll se o conteúdo for muito grande */
-  }
-  
-  /* Ocultar o scroll padrão para um visual mais limpo, se necessário */
-  .main-content::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: white; /* Fundo totalmente branco */
+  /* Remover position: relative; daqui se não houver mais elementos posicionados absolutamente em relação a ele */
+  /* Se tiver elementos como o logo (mesmo que movido), é bom manter */
+  position: relative;
+}
+
+/* Remova este bloco se ainda existir e se o logo foi movido para dentro da sidebar */
+/*
+.header-logo-container {
+  position: absolute; // REMOVER OU COMENTAR ESTA LINHA SE O LOGO ESTIVER DENTRO DA SIDEBAR NO HTML
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+*/
+
+/* NOVO ESTILO/AJUSTE para o logo DENTRO da sidebar */
+.sidebar .header-logo-container { /* Alvo: o container do logo DENTRO da sidebar */
+    margin-bottom: 30px; /* Espaço abaixo do logo */
+    text-align: center; /* Centraliza o logo horizontalmente dentro da sidebar */
+    padding-top: 10px; /* Adiciona um pequeno padding no topo do logo dentro da sidebar */
+}
+
+/* Estilo para a imagem do logo em si */
+.top-ford-logo {
+    height: 60px; /* Tamanho do logo */
+    width: auto;
+}
+
+
+/* O wrapper que contém o sidebar e o conteúdo principal */
+.content-wrapper {
+  display: flex;
+  flex: 1; /* Ocupa o restante do espaço */
+  position: relative; /* Para z-index se necessário */
+  z-index: 1; /* Garante que o conteúdo e sidebar estejam acima do fundo se houver */
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: rgba(255, 255, 255, 0.95); /* Fundo branco do sidebar, com leve transparência */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px 10px; /* Ajuste o padding geral da sidebar */
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+  z-index: 2; /* Garante que o sidebar esteja acima de outros elementos */
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar nav li {
+  margin-bottom: 15px;
+  text-align: center; /* Centraliza o texto dos links */
+}
+
+.sidebar nav a {
+  display: block;
+  color: #002D62;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px 0;
+  transition: text-decoration 0.3s ease;
+}
+
+.sidebar nav a:hover {
+  text-decoration: underline;
+}
+
+.sidebar nav a.active {
+  color: #007bff;
+}
+
+.main-content {
+  flex: 1; /* Ocupa o restante do espaço horizontal */
+  padding: 20px; /* Espaçamento ao redor do conteúdo (imagem e card) */
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column; /* Altera para coluna para empilhar imagem e router-outlet */
+  justify-content: center; /* Centraliza verticalmente a imagem e o router-outlet */
+  align-items: center;   /* Centraliza horizontalmente a imagem e o router-outlet */
+
+  /* Remover qualquer background-color ou background-image definido aqui anteriormente */
+  background-color: transparent; /* Certifica que o main-content não tenha um fundo próprio opaco */
+}
+
+/* Estilos para a imagem da Ranger dentro do main-content */
+.main-ranger-image {
+  max-width: 70%; /* Tamanho da imagem */
+  height: auto;
+  filter: blur(1px); /* Desfoque sutil */
+  opacity: 0.7; /* Leve transparência */
+  margin-bottom: -100px; /* Ajuste este valor para controlar o quanto o cartão 'sobe' sobre a imagem */
+  z-index: 0; /* Garante que a imagem esteja abaixo do router-outlet */
+  position: relative; /* Necessário para z-index */
+}
+
+/* Para o router-outlet (onde o card da Home/Dashboard aparece) */
+main.main-content router-outlet {
+  position: relative; /* Essencial para que o z-index funcione e o cartão apareça acima da imagem */
+  z-index: 1; /* Garante que o router-outlet e, portanto, o cartão, fiquem acima da imagem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

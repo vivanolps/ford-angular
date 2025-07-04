@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'; // Importar Router para navegação
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-auth-layout',
@@ -10,21 +8,18 @@ import { FooterComponent } from '../../components/footer/footer.component';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,        // Para links de navegação
-    RouterLinkActive,  // Para adicionar classe 'active' ao link atual
-    HeaderComponent,
-    FooterComponent
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './auth-layout.component.html',
   styleUrls: ['./auth-layout.component.css']
 })
 export class AuthLayoutComponent {
-
-  constructor(private router: Router) { } // Injetar Router
+  constructor(private router: Router) { }
 
   logout() {
-    // Lógica de logout: limpar token, dados do usuário, e redirecionar para o login
     console.log('Realizando logout...');
-    this.router.navigate(['/login']); // Redireciona para a página de login
+    // Exemplo: localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

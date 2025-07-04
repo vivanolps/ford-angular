@@ -1,19 +1,21 @@
 .dashboard-container {
-    padding: 20px;
-    text-align: center;
-    background-color: #e9ecef;
-    min-height: calc(100vh - 100px); /* Ajuste com base na altura real do header/footer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .dashboard-container h1 {
-    color: #002D62;
-    margin-bottom: 15px;
-  }
-  
-  .dashboard-container p {
-    color: #555;
-  }
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  color: #333;
+  z-index: 2; /* Garante que o cartão fique acima da imagem */
+  position: relative; /* Necessário para o z-index funcionar */
+}
+
+.dashboard-container h1 {
+  color: #002D62;
+  margin-bottom: 15px;
+}
+
+.dashboard-container p {
+  color: #555;
+}
