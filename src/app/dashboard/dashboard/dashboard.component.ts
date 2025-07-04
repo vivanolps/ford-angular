@@ -1,36 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Para ngIf, ngFor
+import { FormsModule } from '@angular/forms'; // Para ngModel no seletor
 
-import { ApiService } from '../../services/api.service'; 
+import { ApiService } from '../../services/api.service'; // <--- MUITO IMPORTANTE: APONTA PARA O SERVIÇO
+
 @Component({
   selector: 'app-dashboard',
-  standalone: true, 
-  imports: [CommonModule, FormsModule], 
+  standalone: true,
+  imports: [CommonModule, FormsModule], // Importe CommonModule e FormsModule aqui
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  vehicles: any[] = []; // Para armazenar a lista de veículos para o seletor
-  selectedVehicleModel: string | undefined; // Para o modelo selecionado no dropdown
-  selectedVehicleDetails: any; // Para os detalhes do veículo selecionado (totalSales, connected, etc.)
-  vehicleData: any[] = []; // Para os dados da tabela (odometro, nivelCombustivel, etc.)
-  vinSearchTerm: string = ''; // Para o campo de busca da tabela (Passo 11)
+  vehicles: any[] = [];
+  selectedVehicleModel: string | undefined;
+  selectedVehicleDetails: any;
+  vehicleData: any[] = [];
+  vinSearchTerm: string = '';
 
-  constructor(private apiService: ApiService) { } 
+  constructor(private apiService: ApiService) { } // Injeta o serviço
 
   ngOnInit(): void {
-    this.loadVehicles(); // Carrega a lista de veículos ao iniciar o componente
+    this.loadVehicles();
   }
 
   loadVehicles(): void {
     this.apiService.getVehicles().subscribe({
       next: (data) => {
         this.vehicles = data;
-        // Opcional: Selecionar o primeiro veículo por padrão
         if (this.vehicles.length > 0) {
           this.selectedVehicleModel = this.vehicles[0].model;
-          this.onVehicleSelect(); // Chama a função para carregar os detalhes do primeiro veículo
+          this.onVehicleSelect();
         }
       },
       error: (err) => {
@@ -41,17 +41,14 @@ export class DashboardComponent implements OnInit {
 
   onVehicleSelect(): void {
     if (this.selectedVehicleModel) {
-      // Busca os detalhes do veículo selecionado
       this.apiService.getVehicleDetailsByModel(this.selectedVehicleModel).subscribe({
         next: (details) => {
-          // A API getVehicleDetailsByModel retorna um array, pegamos o primeiro item
-          this.selectedVehicleDetails = Array.isArray(details) ? details[0] : details; // Adicionando verificação para array
+          this.selectedVehicleDetails = Array.isArray(details) ? details[0] : details;
 
           if (this.selectedVehicleDetails && this.selectedVehicleDetails.vinCode) {
-            // Busca os dados da tabela com base no VIN do veículo selecionado
             this.loadVehicleData(this.selectedVehicleDetails.vinCode);
           } else {
-            this.vehicleData = []; // Limpa a tabela se não houver VIN ou detalhes
+            this.vehicleData = [];
           }
         },
         error: (err) => {
@@ -72,12 +69,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // Função para filtrar os dados da tabela (Passo 11)
   filterTableData(): any[] {
     if (!this.vinSearchTerm || this.vinSearchTerm.trim() === '') {
       return this.vehicleData;
     }
-    // Supondo que 'codigoVin' é a propriedade para busca
     return this.vehicleData.filter(item =>
       item.codigoVin.toLowerCase().includes(this.vinSearchTerm.toLowerCase())
     );
