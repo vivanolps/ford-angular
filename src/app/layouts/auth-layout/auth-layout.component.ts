@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router'; // Importe Router para o logout
 
 @Component({
   selector: 'app-auth-layout',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive
-  ],
+  standalone: true, 
+  imports: [RouterOutlet, RouterLink, RouterLinkActive], 
   templateUrl: './auth-layout.component.html',
   styleUrls: ['./auth-layout.component.css']
 })
 export class AuthLayoutComponent {
-  constructor(private router: Router) { }
+  isSidebarOpen: boolean = false; // Estado inicial da sidebar (fechada em mobile)
 
-  logout() {
-    console.log('Realizando logout...');
-    // Exemplo: localStorage.removeItem('token');
+  constructor(private router: Router) { } // Injeta o Router para o logout
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  logout(): void {
+    
+    console.log('Usuário deslogado!');
+    
     this.router.navigate(['/login']);
   }
 }

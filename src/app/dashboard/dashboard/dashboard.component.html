@@ -1,35 +1,41 @@
-<div class="dashboard-content-container">
-  <div class="vehicle-selector-card card">
-    <label for="vehicle-select">Veículo</label>
-    <select id="vehicle-select" [(ngModel)]="selectedVehicleModel" (change)="onVehicleSelect()">
-      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.model">{{ vehicle.model }}</option>
-    </select>
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dashboard FORD</h1>
+
+  <div class="header-section">
+    <div class="vehicle-selector-card card">
+      <label for="vehicle-select">Veículo</label>
+      <select id="vehicle-select" [(ngModel)]="selectedVehicleModel" (change)="onVehicleSelect()">
+        <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.model">{{ vehicle.model }}</option>
+      </select>
+    </div>
   </div>
 
-  <div class="data-cards" *ngIf="selectedVehicleDetails">
-    <div class="data-card">
+  <div class="data-cards-section" *ngIf="selectedVehicleDetails">
+    <div class="data-card card">
       <span>Total de Vendas</span>
-      <strong>{{ selectedVehicleDetails.totalSales || 0 }}</strong> <small>unid</small>
+      <strong>{{ selectedVehicleDetails.totalSales || 0 }}</strong>
+      <small>unid</small>
     </div>
-    <div class="data-card">
+    <div class="data-card card">
       <span>Conectados</span>
       <strong>{{ selectedVehicleDetails.connected || 0 }}</strong>
       <small>unid</small>
     </div>
-    <div class="data-card">
+    <div class="data-card card">
       <span>Update Software</span>
       <strong>{{ selectedVehicleDetails.softwareUpdated || 0 }}</strong>
       <small>unid</small>
     </div>
   </div>
 
-  <div class="vehicle-display-image" *ngIf="selectedVehicleDetails && selectedVehicleDetails.imageUrl">
-    <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
+  <div class="vehicle-image-section">
+    <div class="vehicle-display-image" *ngIf="selectedVehicleDetails && selectedVehicleDetails.imageUrl">
+      <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
+    </div>
+    <div class="vehicle-display-image no-image" *ngIf="!selectedVehicleDetails || !selectedVehicleDetails.imageUrl">
+      <p>Nenhuma imagem disponível para este veículo.</p>
+    </div>
   </div>
-  <div class="vehicle-display-image" *ngIf="!selectedVehicleDetails || !selectedVehicleDetails.imageUrl">
-    <p>Nenhuma imagem disponível para este veículo.</p>
-  </div>
-
 
   <div class="data-table-section">
     <div class="table-search">
@@ -37,7 +43,7 @@
       <input type="text" id="vin-search" [(ngModel)]="vinSearchTerm" placeholder="Ex: 2FRH..." (keyup)="filterTableData()">
     </div>
 
-    <div class="data-table">
+    <div class="data-table card">
       <table>
         <thead>
           <tr>

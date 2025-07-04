@@ -1,21 +1,210 @@
+/* Estilos gerais do container do dashboard */
 .dashboard-container {
   padding: 20px;
+  font-family: 'Arial', sans-serif; /* Fonte padrão, você pode ajustar */
+  background-color: #f0f2f5; /* Cor de fundo suave */
+  min-height: calc(100vh - 60px); /* Ajustar para a altura da tela, considerando um possível header */
+  display: flex;
+  flex-direction: column; /* Coloca os elementos em coluna */
+  gap: 20px; /* Espaço entre as seções */
+}
+
+/* Estilo para o título principal */
+.dashboard-title {
+  color: #002D5E; /* Azul escuro da Ford */
+  font-size: 2.5em;
+  margin-bottom: 20px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
+}
+
+/* Estilo base para os "cartões" */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px;
+}
+
+/* Seção do Seletor de Veículo */
+.header-section {
+  display: flex;
+  justify-content: flex-start; /* Alinha à esquerda */
   width: 100%;
+}
+
+.vehicle-selector-card {
+  width: 250px; /* Largura fixa para o seletor */
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-selector-card label {
+  font-weight: bold;
+  margin-bottom: 8px;
   color: #333;
-  z-index: 2; /* Garante que o cartão fique acima da imagem */
-  position: relative; /* Necessário para o z-index funcionar */
 }
 
-.dashboard-container h1 {
-  color: #002D62;
-  margin-bottom: 15px;
+.vehicle-selector-card select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  -webkit-appearance: none; /* Remove estilo padrão do navegador */
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C114.1L159.9%2C241.3c-3.1%2C3.1-7.2%2C4.7-11.3%2C4.7s-8.2-1.6-11.3-4.7L5.4%2C114.1c-6.1-6.1-6.1-16.1%2C0-22.2s16.1-6.1%2C22.2%2C0l126.3%2C126.3L264.8%2C91.9c6.1-6.1%2C16.1-6.1%2C22.2%2C0S293.1%2C108%2C287%2C114.1z%22%2F%3E%3C%2Fsvg%3E'); /* Seta customizada */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
 }
 
-.dashboard-container p {
+
+/* Seção dos Cartões de Dados */
+.data-cards-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 colunas responsivas */
+  gap: 20px;
+}
+
+.data-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px; /* Altura mínima para os cartões */
+}
+
+.data-card span {
+  font-size: 0.9em;
   color: #555;
+  margin-bottom: 5px;
+}
+
+.data-card strong {
+  font-size: 2.2em;
+  color: #002D5E; /* Azul escuro da Ford */
+  font-weight: bold;
+}
+
+.data-card small {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Seção da Imagem do Veículo */
+.vehicle-image-section {
+  text-align: center;
+  margin-top: 20px;
+  min-height: 250px; /* Espaço para a imagem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vehicle-display-image img {
+  max-width: 100%;
+  max-height: 300px; /* Altura máxima para a imagem */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-display-image.no-image {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 50px;
+  color: #777;
+  font-style: italic;
+  width: 100%;
+  max-width: 500px; /* Largura máxima para a caixa de "no image" */
+  margin: 0 auto;
+}
+
+/* Seção da Tabela de Dados */
+.data-table-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre o campo de busca e a tabela */
+}
+
+.table-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table-search label {
+  font-weight: bold;
+  color: #333;
+}
+
+.table-search input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  flex-grow: 1; /* Permite que o input cresça */
+  max-width: 300px; /* Limita a largura do campo de busca */
+}
+
+.data-table {
+  overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+}
+
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th, .data-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  background-color: #002D5E; /* Fundo azul escuro para o cabeçalho */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f8f8f8; /* Linhas zebradas para melhor leitura */
+}
+
+.data-table tbody tr:hover {
+  background-color: #eef; /* Efeito hover nas linhas */
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.8em;
+  }
+
+  .data-cards-section {
+    grid-template-columns: 1fr; /* Cartões em uma única coluna em telas menores */
+  }
+
+  .vehicle-selector-card {
+    width: 100%; /* Seletor ocupa toda a largura */
+  }
+
+  .table-search {
+    flex-direction: column; /* Campo de busca em coluna */
+    align-items: flex-start;
+  }
+
+  .table-search input {
+    width: 100%;
+    max-width: none;
+  }
 }

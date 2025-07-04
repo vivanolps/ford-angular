@@ -1,10 +1,18 @@
-<div class="auth-layout-container">
+<div class="auth-layout-container" [class.sidebar-open]="isSidebarOpen">
   <div class="content-wrapper">
     <aside class="sidebar">
-      <div class="header-logo-container"> <img src="../../../../img/ford.png" alt="Logo Ford" class="top-ford-logo">
+      <div class="sidebar-header">
+        <div class="header-logo-container">
+          <img src="../../../../img/ford.png" alt="Logo Ford" class="top-ford-logo">
+        </div>
+        <button class="menu-toggle" (click)="toggleSidebar()">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-      <nav>
-        <ul>
+
+      <nav class="sidebar-nav-menu"> <ul>
           <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
           <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
           <li><a (click)="logout()">Logout</a></li>
@@ -13,7 +21,6 @@
     </aside>
 
     <main class="main-content">
-      <img src="../../../../img/ranger.png" alt="Ford Ranger" class="main-ranger-image">
       <router-outlet></router-outlet>
     </main>
   </div>

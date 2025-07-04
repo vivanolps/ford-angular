@@ -1,122 +1,175 @@
-/* Container principal com fundo branco */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5; /* Cor de fundo geral */
+}
+
 .auth-layout-container {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: white; /* Fundo totalmente branco */
-  /* Remover position: relative; daqui se não houver mais elementos posicionados absolutamente em relação a ele */
-  /* Se tiver elementos como o logo (mesmo que movido), é bom manter */
-  position: relative;
-}
+  background-color: #f0f2f5; 
 
-/* Remova este bloco se ainda existir e se o logo foi movido para dentro da sidebar */
-/*
-.header-logo-container {
-  position: absolute; // REMOVER OU COMENTAR ESTA LINHA SE O LOGO ESTIVER DENTRO DA SIDEBAR NO HTML
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
-*/
-
-/* NOVO ESTILO/AJUSTE para o logo DENTRO da sidebar */
-.sidebar .header-logo-container { /* Alvo: o container do logo DENTRO da sidebar */
-    margin-bottom: 30px; /* Espaço abaixo do logo */
-    text-align: center; /* Centraliza o logo horizontalmente dentro da sidebar */
-    padding-top: 10px; /* Adiciona um pequeno padding no topo do logo dentro da sidebar */
-}
-
-/* Estilo para a imagem do logo em si */
-.top-ford-logo {
-    height: 60px; /* Tamanho do logo */
-    width: auto;
-}
-
-
-/* O wrapper que contém o sidebar e o conteúdo principal */
 .content-wrapper {
   display: flex;
-  flex: 1; /* Ocupa o restante do espaço */
-  position: relative; /* Para z-index se necessário */
-  z-index: 1; /* Garante que o conteúdo e sidebar estejam acima do fundo se houver */
+  flex: 1;
   height: 100%;
   width: 100%;
 }
 
 .sidebar {
-  width: 220px;
-  background-color: rgba(255, 255, 255, 0.95); /* Fundo branco do sidebar, com leve transparência */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-  padding: 20px 10px; /* Ajuste o padding geral da sidebar */
+  width: 220px; /* Largura padrão da sidebar */
+  background-color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Impede que encolha */
   display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  height: 100%;
-  z-index: 2; /* Garante que o sidebar esteja acima de outros elementos */
+  flex-direction: column; /* Organiza logo e menu em coluna */
+  z-index: 2; /* Garante que esteja acima do conteúdo principal */
 }
 
-.sidebar nav ul {
+.sidebar-header {
+  display: flex;
+  justify-content: space-between; /* Espaçamento entre logo e hambúrguer */
+  align-items: center;
+  padding: 15px 20px; /* Padding no cabeçalho da sidebar */
+  border-bottom: 1px solid #eee; /* Linha sutil abaixo do cabeçalho */
+}
+
+.header-logo-container {
+  /* Estilos para o container do logo dentro do header da sidebar */
+}
+
+.top-ford-logo {
+  height: 45px; /* Tamanho do logo */
+  width: auto;
+}
+
+/* Botão Hambúrguer (desktop - escondido) */
+.menu-toggle {
+  display: none; /* Escondido por padrão em desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.menu-toggle .icon-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #002D5E; /* Cor das barras */
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav-menu {
+  flex-grow: 1; /* Permite que a navegação ocupe o espaço restante */
+  padding: 20px 0;
+}
+
+.sidebar-nav-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
-.sidebar nav li {
-  margin-bottom: 15px;
-  text-align: center; /* Centraliza o texto dos links */
+.sidebar-nav-menu li {
+  margin-bottom: 5px;
 }
 
-.sidebar nav a {
+.sidebar-nav-menu li a {
   display: block;
-  color: #002D62;
+  color: #333;
   font-weight: bold;
   text-decoration: none;
-  padding: 5px 0;
-  transition: text-decoration 0.3s ease;
+  padding: 12px 20px; /* Padding para os links do menu */
+  transition: all 0.3s ease;
+  border-left: 5px solid transparent; /* Borda para o efeito ativo */
 }
 
-.sidebar nav a:hover {
-  text-decoration: underline;
+.sidebar-nav-menu li a:hover {
+  background-color: #e6f0ff;
+  color: #002D5E;
+  border-left-color: #a0d0ff; /* Cor da borda no hover */
 }
 
-.sidebar nav a.active {
-  color: #007bff;
+.sidebar-nav-menu li a.active {
+  background-color: #e6f0ff;
+  color: #002D5E;
+  border-left-color: #002D5E; /* Cor da borda para item ativo */
 }
 
 .main-content {
-  flex: 1; /* Ocupa o restante do espaço horizontal */
-  padding: 20px; /* Espaçamento ao redor do conteúdo (imagem e card) */
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column; /* Altera para coluna para empilhar imagem e router-outlet */
-  justify-content: center; /* Centraliza verticalmente a imagem e o router-outlet */
-  align-items: center;   /* Centraliza horizontalmente a imagem e o router-outlet */
-
-  /* Remover qualquer background-color ou background-image definido aqui anteriormente */
-  background-color: transparent; /* Certifica que o main-content não tenha um fundo próprio opaco */
+  flex: 1; /* Ocupa todo o espaço horizontal restante */
+  padding: 20px;
+  overflow-y: auto; /* Permite rolagem vertical para o conteúdo */
+  background-color: #f0f2f5; /* Fundo do main content */
 }
 
-/* Estilos para a imagem da Ranger dentro do main-content */
-.main-ranger-image {
-  max-width: 70%; /* Tamanho da imagem */
-  height: auto;
-  filter: blur(1px); /* Desfoque sutil */
-  opacity: 0.7; /* Leve transparência */
-  margin-bottom: -100px; /* Ajuste este valor para controlar o quanto o cartão 'sobe' sobre a imagem */
-  z-index: 0; /* Garante que a imagem esteja abaixo do router-outlet */
-  position: relative; /* Necessário para z-index */
-}
+@media (max-width: 768px) {
+  .auth-layout-container {
+    flex-direction: column; /* Empilha sidebar e main content */
+  }
 
-/* Para o router-outlet (onde o card da Home/Dashboard aparece) */
-main.main-content router-outlet {
-  position: relative; /* Essencial para que o z-index funcione e o cartão apareça acima da imagem */
-  z-index: 1; /* Garante que o router-outlet e, portanto, o cartão, fiquem acima da imagem */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  .sidebar {
+    width: 100%; /* Sidebar ocupa toda a largura */
+    height: auto; /* Altura automática */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0; /* Remove padding lateral do sidebar */
+    flex-direction: row; /* Para logo e hambúrguer ficarem lado a lado */
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Para posicionar o menu quando aberto */
+  }
+
+  .sidebar-header {
+    width: 100%; /* Ocupa toda a largura do sidebar */
+    border-bottom: none; /* Remove a linha de baixo do header em mobile */
+    justify-content: space-between; /* Garante espaçamento em mobile */
+    padding: 10px 15px; /* Ajusta padding do header em mobile */
+  }
+
+  .top-ford-logo {
+    height: 35px; /* Logo um pouco menor em mobile */
+  }
+
+  .menu-toggle {
+    display: block; /* Mostra o botão hambúrguer em mobile */
+  }
+
+  /* Estilo quando a sidebar está aberta (usando a classe .sidebar-open no .auth-layout-container) */
+  .auth-layout-container.sidebar-open .sidebar-nav-menu {
+    display: flex; /* Mostra o menu */
+    flex-direction: column;
+    position: absolute; /* Menu flutua sobre o conteúdo */
+    top: 100%; /* Abaixo do header da sidebar */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 9; /* Acima do conteúdo, abaixo do header da sidebar */
+    padding: 10px 0; /* Padding para o menu expandido */
+    border-top: 1px solid #eee; /* Adiciona uma linha superior ao menu expandido */
+  }
+
+  .auth-layout-container:not(.sidebar-open) .sidebar-nav-menu {
+    display: none; /* Esconde o menu quando a sidebar não está aberta */
+  }
+
+
+  .sidebar-nav-menu li a {
+    text-align: left; /* Alinha o texto dos links à esquerda em mobile */
+    padding-left: 30px; /* Mais padding para os links em mobile */
+  }
+
+  .main-content {
+    padding: 15px; /* Reduz o padding em telas menores */
+  }
+}
 }

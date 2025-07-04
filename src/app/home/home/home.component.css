@@ -32,3 +32,33 @@
   color: #555;
   font-size: 1.3em;
 }
+
+
+/* Responsividade para tablets e celulares */
+@media (max-width: 768px) {
+  .welcome-card {
+    padding: 30px;
+  }
+
+  .welcome-card h2 {
+    font-size: 1.8em;
+  }
+
+  .welcome-card p {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-card {
+    padding: 20px;
+  }
+
+  .welcome-card h2 {
+    font-size: 1.5em;
+  }
+
+  .welcome-card p {
+    font-size: 1em;
+  }
+}
