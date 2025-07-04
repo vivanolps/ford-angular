@@ -1,0 +1,78 @@
+{
+    "vehicle": [
+      {
+        "id": "mustang",
+        "model": "Mustang",
+        "imageUrl": "https://www.chevrolet.com.br/content/dam/chevrolet/brazil/site/vehicles/cars/camaro-2023/mov/01-camaro-rs.png",
+        "totalSales": 1500,
+        "connected": 500,
+        "softwareUpdated": 750,
+        "vinCode": "3F9M4G8X7P9K6J8G4"
+      },
+      {
+        "id": "ranger",
+        "model": "Ranger",
+        "imageUrl": "https://www.ford.com.br/content/dam/Ford/website-assets/latam/br/trucks/nova-ranger/2023/overview/nva-ranger-wildtrak-lateral-01-desktop.png",
+        "totalSales": 2500,
+        "connected": 800,
+        "softwareUpdated": 1200,
+        "vinCode": "1ABCDEFGH1J2K3L4M5"
+      },
+      {
+        "id": "territory",
+        "model": "Territory",
+        "imageUrl": "https://www.ford.com.ar/content/dam/Ford/website-assets/latam/ar/suvs/territory-2023/territory-lateral.png",
+        "totalSales": 450,
+        "connected": 300,
+        "softwareUpdated": 305,
+        "vinCode": "2FRHDUYS2Y63NHD22454"
+      },
+      {
+        "id": "bronco-sport",
+        "model": "Bronco Sport",
+        "imageUrl": "https://www.ford.com.br/content/dam/Ford/website-assets/latam/br/suvs/bronco-sport/2023/overview/bronco-sport-lateral.png",
+        "totalSales": 800,
+        "connected": 350,
+        "softwareUpdated": 400,
+        "vinCode": "XYZ9876543210ZYW00"
+      }
+    ],
+    "vehicleData": [
+      {
+        "id": 1,
+        "codigoVin": "3F9M4G8X7P9K6J8G4",
+        "odometro": 8000,
+        "nivelCombustivel": 90,
+        "status": "OK",
+        "lat": -12.2302,
+        "long": -38.9214
+      },
+      {
+        "id": 2,
+        "codigoVin": "1ABCDEFGH1J2K3L4M5",
+        "odometro": 15000,
+        "nivelCombustivel": 75,
+        "status": "Atenção",
+        "lat": -15.1234,
+        "long": -40.5678
+      },
+      {
+        "id": 3,
+        "codigoVin": "2FRHDUYS2Y63NHD22454",
+        "odometro": 10000,
+        "nivelCombustivel": 85,
+        "status": "Off",
+        "lat": -12.0000,
+        "long": -38.9214
+      },
+      {
+        "id": 4,
+        "codigoVin": "XYZ9876543210ZYW00",
+        "odometro": 5000,
+        "nivelCombustivel": 60,
+        "status": "OK",
+        "lat": -13.4567,
+        "long": -39.8765
+      }
+    ]
+  }

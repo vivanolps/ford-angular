@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Necessário para *ngIf
-import { FormsModule } from '@angular/forms'; // Necessário para [(ngModel)]
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login', // Mantenha este seletor
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  standalone: true, // Se seu projeto usa standalone components. Se não souber, pode remover por enquanto.
-  imports: [CommonModule, FormsModule] // Se standalone, adicione aqui. Se não for, remova e importe no LoginModule.
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
-export class LoginComponent { // O nome da classe deve ser LoginComponent
+export class LoginComponent {
   usuario = '';
   senha = '';
   lembrar = false;
@@ -18,12 +18,27 @@ export class LoginComponent { // O nome da classe deve ser LoginComponent
 
   constructor(private router: Router) {}
 
-  onLogin() {
+  onLogin(): void {
+    // Validação simples de login
     if (this.usuario === 'admin' && this.senha === '123456') {
       this.erroLogin = false;
-      this.router.navigate(['/dashboard']); // Vamos criar /dashboard depois
+
+      // Se desejar salvar no localStorage quando "lembrar" for marcado
+      if (this.lembrar) {
+        localStorage.setItem('usuario', this.usuario);
+      }
+
+      // Navega para a página do dashboard
+      this.router.navigate(['/dashboard']);
     } else {
       this.erroLogin = true;
     }
   }
+
+  mostrarSenha = false;
+
+toggleSenha(): void {
+  this.mostrarSenha = !this.mostrarSenha;
+}
+
 }
