@@ -3,7 +3,7 @@
       {
         "id": "mustang",
         "model": "Mustang",
-        "imageUrl": "https://www.chevrolet.com.br/content/dam/chevrolet/brazil/site/vehicles/cars/camaro-2023/mov/01-camaro-rs.png",
+        "imageUrl": "assets/img/mustang.png",
         "totalSales": 1500,
         "connected": 500,
         "softwareUpdated": 750,

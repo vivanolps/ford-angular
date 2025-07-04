@@ -23,8 +23,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "img",
-                "output": "img"
+                "input": "src/assets",
+                "output": "/assets/"
               }
             ],
             "styles": [
@@ -82,8 +82,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "img",
-                "output": "img"
+                "input": "src/assets",
+                "output": "/assets/"
               }
             ],
             "styles": [
