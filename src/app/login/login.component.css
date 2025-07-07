@@ -56,13 +56,14 @@ form {
 }
 
 .input-group input {
-  width: calc(100% - 40px); /* Ajusta para os ícones */
-  padding: 12px 10px 12px 40px; /* Padding à esquerda para o ícone */
+  width: 100%; 
+  padding: 12px 40px 12px 40px; 
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none; /* Remove a borda de foco padrão */
-}
+  outline: none;
+  box-sizing: border-box;
+} 
 
 .input-group input:focus {
   border-color: #007bff; /* Borda azul no foco */
@@ -70,11 +71,15 @@ form {
 
 .input-group .icon {
   position: absolute;
-  left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #888; /* Cor dos ícones */
+  color: #888;
   font-size: 1.1em;
+}
+
+.input-group .fa-envelope,
+.input-group .fa-lock {
+  left: 15px;
 }
 
 .password-toggle {

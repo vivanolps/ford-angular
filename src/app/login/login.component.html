@@ -23,19 +23,18 @@
       <div class="input-group">
         <i class="fas fa-lock icon"></i>
         <input
-          [type]="mostrarSenha ? 'text' : 'password'"
-          placeholder="Insira sua senha"
-          [(ngModel)]="senha"
-          name="senha"
-          required
+        [type]="mostrarSenha ? 'text' : 'password'"
+        [(ngModel)]="senha"
+        placeholder="Insira a sua senha"
+        name="senha"
+        required
         >
         <i
-          class="fas"
-          [ngClass]="mostrarSenha ? 'fa-eye-slash' : 'fa-eye'"
-          class="password-toggle"
-          (click)="toggleSenha()"
-          style="cursor: pointer;"
-          title="Mostrar/ocultar senha"
+        class="fas icon password-toggle"
+        [ngClass]="mostrarSenha ? 'fa-eye-slash' : 'fa-eye' "
+        (click)="toggleSenha()"
+        style="cursor: pointer;"
+        title="Mostrar/ocultar senha"
         ></i>
       </div>
       
