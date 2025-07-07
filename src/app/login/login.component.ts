@@ -23,13 +23,11 @@ export class LoginComponent {
     if (this.usuario === 'admin' && this.senha === '123456') {
       this.erroLogin = false;
 
-      // Se desejar salvar no localStorage quando "lembrar" for marcado
       if (this.lembrar) {
         localStorage.setItem('usuario', this.usuario);
       }
 
-      // Navega para a página do dashboard
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
     } else {
       this.erroLogin = true;
     }
@@ -37,8 +35,7 @@ export class LoginComponent {
 
   mostrarSenha = false;
 
-toggleSenha(): void {
-  this.mostrarSenha = !this.mostrarSenha;
-}
-
+  toggleSenha(): void {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
 }
