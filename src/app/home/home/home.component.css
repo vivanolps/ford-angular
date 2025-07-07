@@ -36,6 +36,10 @@
 
 /* Responsividade para tablets e celulares */
 @media (max-width: 768px) {
+ .home-page-container {
+  padding: 20px;
+ }
+
   .welcome-card {
     padding: 30px;
   }

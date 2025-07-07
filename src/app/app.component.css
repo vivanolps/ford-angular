@@ -18,3 +18,38 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* Telas menores que 768px (celulares) */
+@media (max-width: 768px) {
+  .app-main-content {
+    padding: 10px; /* Espaçamento interno evita conteúdo grudado */
+  }
+
+  body {
+    font-size: 14px; /* fonte menor */
+  }
+
+  #root {
+    flex-direction: column; /* garante o empilhamento */
+    }
+}
+
+/* Telas médias (tablets entre 768px e 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-main-content {
+    padding: 20px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+}
+
+/* Telas grandes (desktops) */
+@media (min-width: 1025px) {
+  .app-main-content {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza */
+  }
+}

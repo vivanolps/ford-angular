@@ -134,3 +134,52 @@ button[type="submit"]:enabled:hover {
   margin-top: 15px;
   font-size: 0.9em;
 }
+
+/* Responsividade para tablets e celulares */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column; /* Empilha as seç~´oes verticalmente */
+    height: auto; /* para remover a altura fixa */
+  }
+
+  .login-image-section,
+  .login-form-section {
+    flex: none;
+    width: 100%;
+    border-left: none; /* remove a linha que tá dividindo a tela */
+    padding: 20px;
+  }
+
+  .ranger-image {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+
+  .ford-logo {
+    width: 150px; /* Reduz o tamanho da logo */
+    margin-bottom: 20px;
+  }
+
+  .login-form-section h2 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .auto-login-checkbox {
+    font-size: 0.85em;
+  }
+
+  button[type="submit"] {
+    font-size: 1em;
+    padding: 10px 16px;
+  }
+}
