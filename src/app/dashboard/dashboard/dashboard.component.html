@@ -26,11 +26,8 @@
       <strong>{{ selectedVehicleDetails.softwareUpdated || 0 }}</strong>
       <small>unid</small>
     </div>
-  </div>
-
-  <div class="vehicle-image-section">
     <div class="vehicle-display-image" *ngIf="selectedVehicleDetails && selectedVehicleDetails.imageUrl">
-      <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
+       <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
     </div>
     <div class="vehicle-display-image no-image" *ngIf="!selectedVehicleDetails || !selectedVehicleDetails.imageUrl">
       <p>Nenhuma imagem disponível para este veículo.</p>

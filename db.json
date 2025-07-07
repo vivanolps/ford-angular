@@ -1,40 +1,40 @@
 {
     "vehicle": [
       {
-        "id": "mustang",
+        "id": 1,
         "model": "Mustang",
-        "imageUrl": "assets/img/mustang.png",
         "totalSales": 1500,
         "connected": 500,
         "softwareUpdated": 750,
-        "vinCode": "3F9M4G8X7P9K6J8G4"
+        "vinCode": "3F9M4G8X7P9K6J8G4",
+        "imageUrl": "assets/img/mustang.png" 
       },
       {
-        "id": "ranger",
-        "model": "Ranger",
-        "imageUrl": "https://www.ford.com.br/content/dam/Ford/website-assets/latam/br/trucks/nova-ranger/2023/overview/nva-ranger-wildtrak-lateral-01-desktop.png",
-        "totalSales": 2500,
-        "connected": 800,
-        "softwareUpdated": 1200,
-        "vinCode": "1ABCDEFGH1J2K3L4M5"
+        "id": 2,
+      "model": "Ranger",
+      "totalSales": 2500,
+      "connected": 800,
+      "softwareUpdated": 1200,
+      "vinCode": "1F6R7G2T3X9L5M1N2",
+      "imageUrl": "assets/img/ranger.png" 
       },
       {
-        "id": "territory",
+        "id": 3,
         "model": "Territory",
-        "imageUrl": "https://www.ford.com.ar/content/dam/Ford/website-assets/latam/ar/suvs/territory-2023/territory-lateral.png",
         "totalSales": 450,
-        "connected": 300,
-        "softwareUpdated": 305,
-        "vinCode": "2FRHDUYS2Y63NHD22454"
+        "connected": 500,
+        "softwareUpdated": 3050,
+        "vinCode": "2N4A3Y1F4A9G5H6I7",
+        "imageUrl": "assets/img/territory.png" 
       },
       {
-        "id": "bronco-sport",
+        "id": 4,
         "model": "Bronco Sport",
-        "imageUrl": "https://www.ford.com.br/content/dam/Ford/website-assets/latam/br/suvs/bronco-sport/2023/overview/bronco-sport-lateral.png",
         "totalSales": 800,
-        "connected": 350,
-        "softwareUpdated": 400,
-        "vinCode": "XYZ9876543210ZYW00"
+        "connected": 400,
+        "softwareUpdated": 600,
+        "vinCode": "5B8C1D2E3F4G5H6I7",
+        "imageUrl": "assets/img/broncoSport.png" 
       }
     ],
     "vehicleData": [
