@@ -1,71 +1,79 @@
 .home-page-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  flex-grow: 1;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: relative;
   overflow: hidden;
+  background-color: #f5f7fc;
 }
 
+/* Imagem da Ranger no fundo, centralizada */
 .background-ranger {
-  position: absolute; /* Posição absoluta em relação ao .home-page-container */
-  top: 50%; /* Inicia no meio vertical do container */
-  left: 50%; /* Inicia no meio horizontal do container */
-  transform: translate(-50%, -50%); /* Ajusta para centralizar o centro da imagem */
-  width: 80%; /* Tamanho da imagem. Ajuste conforme necessário. Ex: 80%, 70%, 90% */
-  max-width: 1200px; /* Limite máximo para a imagem não ficar gigante em telas muito grandes */
-  height: auto; /* Mantém a proporção da imagem */
-  z-index: 1; /* A imagem fica atrás do card, que tem z-index: 2 */
-  opacity: 0.7; /* Opcional: Torna a imagem ligeiramente transparente para o card se destacar mais. Ajuste entre 0 e 1. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .background-ranger img {
-  width: 100%; /* Faz a imagem preencher o .background-ranger div */
-  height: auto; /* Mantém a proporção */
-  display: block; /* Remove espaço extra abaixo da imagem */
-  object-fit: contain; /* Garante que a imagem inteira seja visível dentro do espaço, não cortada */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
+/* Card de boas-vindas */
 .welcome-card {
-  background-color: rgba(255, 255, 255, 0.85);
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
   text-align: center;
-  z-index: 2; /* Garante que o cartão fique acima da imagem */
-  position: relative; /* Necessário para o z-index funcionar */
-  width: 100%;
-  max-width: 450px;
-  color: #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px); /* Efeito bonito de vidro */
 }
 
 .welcome-card h2 {
+  font-size: 2em;
   color: #002D62;
-  margin-bottom: 15px;
-  font-size: 2.2em;
-  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .welcome-card p {
-  color: #555;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  color: #007BFF;
 }
 
+/* Overlay quando menu estiver ativo */
+.overlay-active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 12, 0.5); /* Escurece tudo */
+  z-index: 1.5; /* Entre imagem e o card/menu */
+}
 
-/* Responsividade para tablets e celulares */
+/* Responsividade */
 @media (max-width: 768px) {
- .home-page-container {
-  padding: 20px;
- }
-
   .welcome-card {
     padding: 30px;
   }
 
   .welcome-card h2 {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
 
   .welcome-card p {
@@ -79,7 +87,7 @@
   }
 
   .welcome-card h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   .welcome-card p {
