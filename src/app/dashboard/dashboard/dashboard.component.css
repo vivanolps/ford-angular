@@ -1,3 +1,5 @@
+/* dashboard.component.css */
+
 /* Estilos gerais do container do dashboard */
 .dashboard-container {
   padding: 20px;
@@ -67,6 +69,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 colunas responsivas */
   gap: 20px;
+  /* Removido o item de imagem daqui, pois ele terá sua própria seção */
 }
 
 .data-card {
@@ -96,25 +99,39 @@
   margin-top: 5px;
 }
 
-/* Seção da Imagem do Veículo */
-.vehicle-image-section {
-  text-align: center;
-  margin-top: 20px;
-  min-height: 250px; /* Espaço para a imagem */
+/* NOVO: Seção da Imagem do Veículo CENTRALIZADA */
+.vehicle-image-central-section {
+  text-align: center; /* Centraliza o conteúdo (a div da imagem) */
+  /* margin-top: 20px; Removido, o gap do dashboard-container já gerencia */
+  min-height: 250px; /* Espaço mínimo para a imagem */
+  display: flex; /* Usa flexbox para centralizar a imagem dentro dela */
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* Fundo branco para a área da imagem */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px; /* Padding interno */
+}
+
+.vehicle-image-central-section .vehicle-display-image {
+  /* Garante que o container da imagem dentro desta seção seja flexível */
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%; /* Ocupa a largura total da seção */
+  height: 100%; /* Ocupa a altura total da seção */
 }
 
-.vehicle-display-image img {
+.vehicle-image-central-section .vehicle-display-image img {
   max-width: 100%;
   max-height: 300px; /* Altura máxima para a imagem */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  object-fit: contain; /* Garante que a imagem inteira seja visível, sem cortar */
 }
 
-.vehicle-display-image.no-image {
+.vehicle-image-central-section .vehicle-display-image.no-image {
   background-color: #e0e0e0;
   border-radius: 8px;
   padding: 50px;
@@ -125,9 +142,10 @@
   margin: 0 auto;
 }
 
+
 /* Seção da Tabela de Dados */
 .data-table-section {
-  margin-top: 20px;
+  /* margin-top: 20px; Removido, o gap do dashboard-container já gerencia */
   display: flex;
   flex-direction: column;
   gap: 15px; /* Espaço entre o campo de busca e a tabela */
@@ -206,5 +224,42 @@
   .table-search input {
     width: 100%;
     max-width: none;
+  }
+
+  .vehicle-image-central-section {
+    min-height: 180px; /* Ajusta altura mínima para mobile */
+    max-height: 250px; /* Ajusta altura máxima para mobile */
+  }
+
+  .vehicle-image-central-section .vehicle-display-image img {
+    max-height: 200px; /* Altura máxima da imagem em mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .dashboard-title {
+    font-size: 1.5em;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .data-card strong {
+    font-size: 1.8em;
+  }
+
+  .vehicle-image-central-section {
+    min-height: 150px;
+    max-height: 200px;
+  }
+
+  .vehicle-image-central-section .vehicle-display-image img {
+    max-height: 150px;
   }
 }

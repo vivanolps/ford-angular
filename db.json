@@ -49,7 +49,7 @@
       },
       {
         "id": 2,
-        "codigoVin": "1ABCDEFGH1J2K3L4M5",
+        "codigoVin": "1F6R7G2T3X9L5M1N2",
         "odometro": 15000,
         "nivelCombustivel": 75,
         "status": "Atenção",
@@ -58,7 +58,7 @@
       },
       {
         "id": 3,
-        "codigoVin": "2FRHDUYS2Y63NHD22454",
+        "codigoVin": "2N4A3Y1F4A9G5H6I7",
         "odometro": 10000,
         "nivelCombustivel": 85,
         "status": "Off",
@@ -67,7 +67,7 @@
       },
       {
         "id": 4,
-        "codigoVin": "XYZ9876543210ZYW00",
+        "codigoVin": "5B8C1D2E3F4G5H6I7",
         "odometro": 5000,
         "nivelCombustivel": 60,
         "status": "OK",

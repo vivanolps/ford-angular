@@ -1,3 +1,4 @@
+<!-- dashboard.component.html -->
 <div class="dashboard-container">
   <h1 class="dashboard-title">Dashboard FORD</h1>
 
@@ -10,6 +11,7 @@
     </div>
   </div>
 
+  <!-- Seção dos Cartões de Dados (sem a imagem aqui) -->
   <div class="data-cards-section" *ngIf="selectedVehicleDetails">
     <div class="data-card card">
       <span>Total de Vendas</span>
@@ -26,8 +28,12 @@
       <strong>{{ selectedVehicleDetails.softwareUpdated || 0 }}</strong>
       <small>unid</small>
     </div>
+  </div>
+
+  <!-- NOVO: Seção da Imagem do Veículo CENTRALIZADA -->
+  <div class="vehicle-image-central-section">
     <div class="vehicle-display-image" *ngIf="selectedVehicleDetails && selectedVehicleDetails.imageUrl">
-       <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
+      <img [src]="selectedVehicleDetails.imageUrl" [alt]="selectedVehicleDetails.model">
     </div>
     <div class="vehicle-display-image no-image" *ngIf="!selectedVehicleDetails || !selectedVehicleDetails.imageUrl">
       <p>Nenhuma imagem disponível para este veículo.</p>
