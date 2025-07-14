@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="header-logo-container">
-          <img src="assets/img/ford.png" alt="Logo Ford" class="top-ford-logo">
+          <img src="../../../assets/img/ford.png" alt="Logo Ford" class="top-ford-logo">
         </div>
         <button class="menu-toggle" (click)="toggleSidebar()">
           <span class="icon-bar"></span>
@@ -12,7 +12,8 @@
         </button>
       </div>
 
-      <nav class="sidebar-nav-menu"> <ul>
+      <nav class="sidebar-nav-menu">
+        <ul>
           <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
           <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
           <li><a (click)="logout()">Logout</a></li>
@@ -21,8 +22,6 @@
     </aside>
 
     <main class="main-content">
-      <!-- Overlay para fechar ao clicar fora -->
-<div class="overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
       <router-outlet></router-outlet>
     </main>
   </div>
