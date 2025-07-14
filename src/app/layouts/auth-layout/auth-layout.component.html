@@ -21,6 +21,8 @@
     </aside>
 
     <main class="main-content">
+      <!-- Overlay para fechar ao clicar fora -->
+<div class="overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
       <router-outlet></router-outlet>
     </main>
   </div>

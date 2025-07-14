@@ -1,18 +1,22 @@
+/* Reset e configurações básicas */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background-color: #f0f2f5; /* Cor de fundo geral */
+  background-color: #f0f2f5;
 }
 
+/* Container geral do layout */
 .auth-layout-container {
   display: flex;
   min-height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: #f0f2f5; 
+  position: relative;
+}
 
+/* Wrapper que segura a sidebar e o conteúdo */
 .content-wrapper {
   display: flex;
   flex: 1;
@@ -20,34 +24,35 @@ html, body {
   width: 100%;
 }
 
+/* SIDEBAR - Desktop */
 .sidebar {
-  width: 220px; /* Largura padrão da sidebar */
+  width: 220px;
   background-color: #ffffff;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Impede que encolha */
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column; /* Organiza logo e menu em coluna */
-  z-index: 2; /* Garante que esteja acima do conteúdo principal */
+  flex-direction: column;
+  z-index: 999;
+  transition: transform 0.3s ease;
 }
 
+/* Cabeçalho da sidebar (logo e botão) */
 .sidebar-header {
   display: flex;
-  justify-content: space-between; /* Espaçamento entre logo e hambúrguer */
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px; /* Padding no cabeçalho da sidebar */
-  border-bottom: 1px solid #eee; /* Linha sutil abaixo do cabeçalho */
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
 }
 
-
-
 .top-ford-logo {
-  height: 45px; /* Tamanho do logo */
+  height: 45px;
   width: auto;
 }
 
-/* Botão Hambúrguer (desktop - escondido) */
+/* Botão hambúrguer (escondido no desktop) */
 .menu-toggle {
-  display: none; /* Escondido por padrão em desktop */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -61,13 +66,14 @@ html, body {
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #002D5E; /* Cor das barras */
+  background-color: #002D5E;
   margin: 5px 0;
   transition: all 0.3s ease;
 }
 
+/* Menu de navegação */
 .sidebar-nav-menu {
-  flex-grow: 1; /* Permite que a navegação ocupe o espaço restante */
+  flex-grow: 1;
   padding: 20px 0;
 }
 
@@ -86,88 +92,82 @@ html, body {
   color: #333;
   font-weight: bold;
   text-decoration: none;
-  padding: 12px 20px; /* Padding para os links do menu */
+  padding: 12px 20px;
   transition: all 0.3s ease;
-  border-left: 5px solid transparent; /* Borda para o efeito ativo */
+  border-left: 5px solid transparent;
 }
 
 .sidebar-nav-menu li a:hover {
   background-color: #e6f0ff;
   color: #002D5E;
-  border-left-color: #a0d0ff; /* Cor da borda no hover */
+  border-left-color: #a0d0ff;
 }
 
 .sidebar-nav-menu li a.active {
   background-color: #e6f0ff;
   color: #002D5E;
-  border-left-color: #002D5E; /* Cor da borda para item ativo */
+  border-left-color: #002D5E;
 }
 
+/* CONTEÚDO PRINCIPAL */
 .main-content {
-  flex: 1; /* Ocupa todo o espaço horizontal restante */
+  flex: 1;
   padding: 20px;
-  overflow-y: auto; /* Permite rolagem vertical para o conteúdo */
-  background-color: #f0f2f5; /* Fundo do main content */
+  overflow-y: auto;
+  background-color: #f0f2f5;
+  z-index: 1;
 }
 
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .auth-layout-container {
-    flex-direction: column; /* Empilha sidebar e main content */
-  }
-
+  /* Sidebar vira flutuante */
   .sidebar {
-    width: 100%; /* Sidebar ocupa toda a largura */
-    height: auto; /* Altura automática */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 0; /* Remove padding lateral do sidebar */
-    flex-direction: row; /* Para logo e hambúrguer ficarem lado a lado */
-    justify-content: space-between;
-    align-items: center;
-    position: relative; /* Para posicionar o menu quando aberto */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    width: 220px;
+    z-index: 999;
   }
 
-  .sidebar-header {
-    width: 100%; /* Ocupa toda a largura do sidebar */
-    border-bottom: none; /* Remove a linha de baixo do header em mobile */
-    justify-content: space-between; /* Garante espaçamento em mobile */
-    padding: 10px 15px; /* Ajusta padding do header em mobile */
+  /* Quando aberta via classe */
+  .auth-layout-container.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Exibe o botão hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Esconde o menu nav (caso use condicional ngIf) */
+  .auth-layout-container:not(.sidebar-open) .sidebar-nav-menu {
+    display: none;
+  }
+
+  .auth-layout-container.sidebar-open .sidebar-nav-menu {
+    display: block;
+  }
+
+  /* Reduz padding do conteúdo */
+  .main-content {
+    padding: 15px;
   }
 
   .top-ford-logo {
-    height: 35px; /* Logo um pouco menor em mobile */
+    height: 35px;
   }
 
-  .menu-toggle {
-    display: block; /* Mostra o botão hambúrguer em mobile */
-  }
-
-  /* Estilo quando a sidebar está aberta (usando a classe .sidebar-open no .auth-layout-container) */
-  .auth-layout-container.sidebar-open .sidebar-nav-menu {
-    display: flex; /* Mostra o menu */
-    flex-direction: column;
-    position: absolute; /* Menu flutua sobre o conteúdo */
-    top: 100%; /* Abaixo do header da sidebar */
+  /* Overlay escuro por trás do menu aberto */
+  .auth-layout-container.sidebar-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    z-index: 9; /* Acima do conteúdo, abaixo do header da sidebar */
-    padding: 10px 0; /* Padding para o menu expandido */
-    border-top: 1px solid #eee; /* Adiciona uma linha superior ao menu expandido */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 998;
   }
-
-  .auth-layout-container:not(.sidebar-open) .sidebar-nav-menu {
-    display: none; /* Esconde o menu quando a sidebar não está aberta */
-  }
-
-
-  .sidebar-nav-menu li a {
-    text-align: left; /* Alinha o texto dos links à esquerda em mobile */
-    padding-left: 30px; /* Mais padding para os links em mobile */
-  }
-
-  .main-content {
-    padding: 15px; /* Reduz o padding em telas menores */
-  }
-}
 }
